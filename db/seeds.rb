@@ -10,3 +10,4 @@
   Category.create(name: "Rails")
   Category.create(name: "React")
   Category.create(name: "JavaScript")
+  

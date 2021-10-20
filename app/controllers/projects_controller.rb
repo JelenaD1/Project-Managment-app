@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end 
 
   def show 
-    @task = @project.tasks.build
+    # @task = @project.tasks.build
     @all_categories = Category.all
     @tasks = @project.tasks
   end 
@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
   end 
 
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :github, :start_date)
   end 
 
   

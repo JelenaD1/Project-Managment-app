@@ -1,46 +1,57 @@
-
-<%= link_to 'Back', projects_path, class: 'btn btn-secondary mb-3' %>
-<div class="card">
-  <div class="card-body">
-    <h2 class='card-title d-flex justify-content-between mb-4'>
-      <span><%= @project.name %></span>
-      <div>
-        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-light' %>
-        <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
-      </div>
-    </h2>
-
-    <div class="mb-4">
-      <h6><%=link_to 'Add task', new_project_task_path(@project) %></h6>
-    </div>
-
-   
-
-<h1>Tasks</h1>
-
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Status</th>
-    <th>Project</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.title %></td>
-    <td><%= task.description %></td>
-    <td><%= task.status %></td>
-    <td><%= task.project.name %></td>
-    <td><%= link_to 'Show', [task.project, task] %></td>
-    <td><%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-  </div>
+<div class='d-flex justify-content-between'>
+<%= link_to 'Back', projects_path, class: 'btn btn-secondary ' %>
+ <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
 </div>
+
+
+<div class="card text-center w-50" style="height: 35rem;">
+  <div class="card-body">
+    <div class="d-flex flex-row-reverse">
+       <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-secondary' %>
+      </div>
+    <h2 class='card-title'>
+      <span><%= @project.name %></span>
+    </h2>
+    <p class='card-text'>GitHub repo: <%= link_to @project.github, @project.github, target: :_blank %><br>
+    <p>Statistics:</p>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Project status:
+        <span class="badge bg-primary rounded-pill"><%= @project.status%></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+       Total tasks for this project:
+       <span class="badge bg-primary rounded-pill"><%= @project.total_tasks%></span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+       Tasks completed:
+       <span class="badge bg-primary rounded-pill"><%= @project.total_complete%></span>
+      </li>
+    </ul>  
+
+    <%=link_to 'Add new task', new_project_task_path(@project), class: "btn btn-primary" %>
+  </div>
+</div>    
+
+
+  <br>
+  <h3 class='d-flex justify-content-center'>Tasks</h3>
+    <% @tasks.each do |task|%>
+      <div class="card text-center w-50" style="height: 19rem;">
+       <div class="card-body">
+       <h2 class='card-title'>
+        <span><%= task.status %></span>
+      </h2>
+       <div class="d-flex flex-row-reverse justify_content-end">
+       <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark' %><br>
+       <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-secondary' %>
+      </div>
+        <h5 class="card-title"> Task title: <%= task.title%> </h5><br>
+        <p class="card-text">Description: <%= task.description%></p><br>
+       </div>
+      </div>  
+    <% end %>
+ 
+
+
 

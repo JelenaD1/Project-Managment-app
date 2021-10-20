@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_project
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_category_collection
 
 
   def index
@@ -14,16 +15,14 @@ class TasksController < ApplicationController
 
   def new
     @task = @project.tasks.build
-     @all_categories = Category.all
+
   end
 
   def edit
   end
 
   def create
-     @all_categories = Category.all
     @task = @project.tasks.build(task_params)
-
     if @task.save
       redirect_to @project, notice: "New task was created!"
     else
@@ -32,7 +31,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update_attributes(task_params)
+    if @task.update(task_params)
       redirect_to(@task.project)
     else
       render action: 'edit'
@@ -59,6 +58,10 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:title, :description, :status, :project_id, :category_id)
     end
+
+    def set_category_collection
+      @all_categories = Category.all
+    end 
 end
 
 

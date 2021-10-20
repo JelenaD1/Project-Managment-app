@@ -18,8 +18,12 @@
 
     <%= form.label :description %>
     <%= form.text_area :description %>
-  
-  
+
+    <%= form.label :github %>
+    <%= form.text_field :github %>
+
+    <%= form.label 'Start Date' %>
+    <%= form.date_field :start_date %>
   
     <%= form.submit class: "btn btn-primary" %>
     </div>

@@ -20,4 +20,17 @@
 
 .main-content {
   padding-left: 30px;
+  padding-right: 30px;
 }
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+  height: 100px;
+}
+
+body { 
+  background-image: image-url('download.png'); 
+}
+
