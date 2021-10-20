@@ -1,0 +1,27 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div>
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+      <ul>
+        <% project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='modal-dialog' role='document'>
+   <div class='modal-content'>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  
+
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  
+  
+  
+    <%= form.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

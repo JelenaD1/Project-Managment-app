@@ -1,0 +1,19 @@
+<% name = current_user.present? ? current_user.email : 'Please Login to Your Account' %>
+<h1> Welcome, <%= name%></h1>
+
+<div class="container-fluid">
+  <div >
+    <h2 class='card-title d-flex justify-content-between mb-4'>
+      <span>Projects</span>
+      <%= link_to 'New Project', new_project_path, class: 'btn btn-primary' %>
+    </h2>
+
+    <ul>
+    <% current_user.projects.each do |project|%>
+    <li> <%= link_to project.name, project_path(project) %></li>
+    <p><%= project.description%></p>
+
+    <% end %>
+    </ul>
+  </div>
+</div>
