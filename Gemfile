@@ -58,4 +58,6 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'pry'
 gem 'pry-rails'
+gem 'faker'
+
 

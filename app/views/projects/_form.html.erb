@@ -9,23 +9,34 @@
       </ul>
     </div>
   <% end %>
-
-  <div class='modal-dialog' role='document'>
-   <div class='modal-content'>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
   
 
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-
-    <%= form.label :github %>
-    <%= form.text_field :github %>
-
-    <%= form.label 'Start Date' %>
-    <%= form.date_field :start_date %>
-  
-    <%= form.submit class: "btn btn-primary" %>
+<div class="card text-center w-25" style="height: 35rem;">  
+ <div class='card-body'> 
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'form-control'%>
     </div>
+
+    <div>
+      <%= form.label :description %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>  
+    
+    <div>
+      <%= form.label :github %>
+      <%= form.text_field :github, class: 'form-control' %>
+    </div>  
+    
+    <div>
+      <%= form.label 'Start Date' %>
+      <%= form.date_field :start_date, class: 'form-control'%>
+    </div>
+    
+    <br>
+    <div class='actions'>
+      <%= form.submit class: "btn btn-primary" %>
+    </div>  
   </div>
+</div>
 <% end %>

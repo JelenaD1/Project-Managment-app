@@ -12,27 +12,30 @@
   <% end %>
 
     <%= f.hidden_field :status, value: 'not-started' %>
-
-  <div class="form-group">
+<div class="card text-center w-25" style="height: 32rem;">  
+ <div class='card-body'> 
+  <div >
     <%= f.label :title %><br />
     <%= f.text_field :title, class: 'form-control' %>
   </div>
-  <div class="form-group">
+  <div >
     <%= f.label :description %><br />
     <%= f.text_area :description, class: 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :status %><br />
+  <div >
+    <%= f.label :status %>:<br />
     <%= f.select :status, Task::STATUS_OPTIONS, {}, class: 'form-control' %>
   </div>
 
-   <div class="form-group">
+   <div >
     <%= f.label "Choose project category" %><br />
-    <%= f.collection_select :category_id, @all_categories, :id, :name, prompt: true %>  
+    <%= f.collection_select :category_id, @all_categories, :id, :name, prompt: true %><br>
   </div>
 
-  
+  <br>
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>
+  </div>
+</div>  
 <% end %>

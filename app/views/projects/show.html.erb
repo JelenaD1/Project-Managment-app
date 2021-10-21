@@ -1,6 +1,6 @@
 <div class='d-flex justify-content-between'>
 <%= link_to 'Back', projects_path, class: 'btn btn-secondary ' %>
- <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-dark', data: { confirm: 'Are you sure?' } %>
+ <%= link_to 'Destroy', @project, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
 </div>
 
 
@@ -16,16 +16,22 @@
     <p>Statistics:</p>
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        Project status:
+        Project status: 
+        <% if @project.status == 'complete'%>
+        <span class="badge bg-success rounded-pill"><%= @project.status%></span>
+        <% elsif @project.status == 'in-progress'%>
         <span class="badge bg-primary rounded-pill"><%= @project.status%></span>
+        <% else %>
+        <span class="badge bg-warning rounded-pill"><%= @project.status%></span>
+        <% end %>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
        Total tasks for this project:
-       <span class="badge bg-primary rounded-pill"><%= @project.total_tasks%></span>
+       <span class="badge bg-dark rounded-pill"><%= @project.total_tasks%></span>
       </li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
        Tasks completed:
-       <span class="badge bg-primary rounded-pill"><%= @project.total_complete%></span>
+       <span class="badge bg-dark rounded-pill"><%= @project.total_complete%></span>
       </li>
     </ul>  
 
@@ -40,11 +46,17 @@
       <div class="card text-center w-50" style="height: 19rem;">
        <div class="card-body">
        <h2 class='card-title'>
-        <span><%= task.status %></span>
+       <% if task.status == 'complete' %>
+        <span class="badge bg-success rounded-pill"><%= task.status %></span>
+       <% elsif task.status == 'in-progress'%>
+        <span class="badge bg-primary rounded-pill"><%= task.status %></span>
+       <% else %> 
+        <span class="badge bg-warning rounded-pill"><%= task.status %></span>     
+       <% end %> 
       </h2>
        <div class="d-flex flex-row-reverse justify_content-end">
-       <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-dark' %><br>
-       <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-secondary' %>
+       <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %><br>
+       <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-secondary', style:'margin: 0px 2px' %>
       </div>
         <h5 class="card-title"> Task title: <%= task.title%> </h5><br>
         <p class="card-text">Description: <%= task.description%></p><br>

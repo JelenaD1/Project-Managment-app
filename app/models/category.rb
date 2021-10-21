@@ -3,6 +3,5 @@ class Category < ApplicationRecord
   has_many :projects, through: :tasks
 
 
-
  
 end

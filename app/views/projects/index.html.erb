@@ -1,23 +1,24 @@
 <% name = current_user.present? ? current_user.name : 'Please Login to Your Account' %>
 <h1> Welcome, <%= name%></h1>
 
-
   <div >
       <%= link_to 'New Project', new_project_path, class: "btn btn-primary" %>
   </div>
 
 
-
 <% current_user.projects.each do |project|%>
-  <div class="card text-center w-50" style="height: 19rem;">
+  <div class="card text-center w-50" style="height: 20rem;">
     <div class="card-header">
-      Project started: <%=project.start_date%>
+      Project started: <%= project.start_date%>
     </div>
     <div class='card-body'>  
       <h5 class="card-title"><%= project.name%></h5>
       <p class="card-text">Description: <%= project.description%></p><br>
-      <%= link_to "Project details", project_path(project), class: "btn btn-primary" %><br>
+      <%= link_to "Project details", project_path(project), class: "btn btn-primary" %>
+     <br>  
+    </div>  
     <div class="card-footer text-muted">Completed: <%=project.percent_complete%>%</div>
-  </div>  
   </div>
 <% end %>
+
+

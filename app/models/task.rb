@@ -11,8 +11,6 @@ class Task < ApplicationRecord
     ['Complete', 'complete']
   ]
 
-  
-
   def complete?
     status == 'complete'
   end
