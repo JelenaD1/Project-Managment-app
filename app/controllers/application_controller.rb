@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if:  :devise_controller?
+  before_action :prep_navbar
 
 
 protected
@@ -9,4 +10,8 @@ protected
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
 
   end
+
+  def prep_navbar
+    @categories = Category.all 
+  end 
 end

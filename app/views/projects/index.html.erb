@@ -7,7 +7,7 @@
 
 
 <% current_user.projects.each do |project|%>
-  <div class="card text-center w-50" style="height: 20rem;">
+  <div class="card text-center w-50" style="height: 25rem;">
     <div class="card-header">
       Project started: <%= project.start_date%>
     </div>
@@ -17,7 +17,17 @@
       <%= link_to "Project details", project_path(project), class: "btn btn-primary" %>
      <br>  
     </div>  
-    <div class="card-footer text-muted">Completed: <%=project.percent_complete%>%</div>
+    <div class="card-footer text-muted">Completed: <%= project.percent_complete %>%</div>
+     <div class="progress">
+      <% if project.percent_complete < 50%>
+       <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: <%= project.percent_complete %>%" aria-valuenow="<%= project.percent_complete %>" aria-valuemin="0" aria-valuemax="100"></div>
+      <% elsif project.percent_complete < 100%>
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: <%= project.percent_complete %>%" aria-valuenow="<%= project.percent_complete %>" aria-valuemin="0" aria-valuemax="100"></div>
+      <% else %>
+       <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: <%= project.percent_complete %>%" aria-valuenow="<%= project.percent_complete %>" aria-valuemin="0" aria-valuemax="100"></div>
+      <% end %> 
+
+    </div>
   </div>
 <% end %>
 

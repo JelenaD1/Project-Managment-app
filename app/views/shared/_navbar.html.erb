@@ -12,6 +12,17 @@
        <li class="nav-item" >
       <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'%>
       </li>
+      <div class='btn-group pull-right right-nav'>
+        <button type='button' class='btn btn-mini dropdown-toggle' data-toggle='dropdown'>
+          <span class='caret'></span>
+          <span class='sr-only'>Categories</span>
+        </button>  
+        <ul class='dropdown-menu' role='menu'>
+        <% @categories.each do |category| %>
+          <li><%= link_to category.name, category_path(category) %>
+          <% end %>
+        </ul>
+      </div>
     <% else%>
        <li class="nav-item" >
        <%= link_to 'Register', new_user_registration_path, class: 'nav-link'%>
