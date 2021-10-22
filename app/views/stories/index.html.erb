@@ -2,3 +2,19 @@
 <div >
       <%= link_to 'New Story', new_story_path, class: "btn btn-primary" %>
 </div>
+
+
+ <h3 class='d-flex justify-content-center'>Stories</h3>
+    <% @stories.each do |story|%>
+      <div class="card text-center w-25" style="height: 20rem;">
+       <div class="card-body">
+        <div class="d-flex flex-row-reverse justify_content-end">
+        <%= link_to 'Destroy', stories_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %><br>
+        <%= link_to 'Edit', edit_story_path(story), class: 'btn btn-secondary', style:'margin: 0px 2px' %>
+       </div>
+       <h5 class="card-title"> Story title: <%= story.name%> </h5><br>
+        <p class="card-text">Description: <%= story.description%></p><br>
+         <p class="card-text">Link: <%= link_to story.link, story.link, target: :_blank%></p><br>
+      </div>
+      </div>  
+    <% end %>
