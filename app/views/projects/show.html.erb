@@ -8,7 +8,7 @@
   <div class="card-body">
     <div class="d-flex flex-row-reverse">
        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-secondary' %>
-      </div>
+    </div>
     <h2 class='card-title'>
       <span><%= @project.name %></span>
     </h2>
@@ -45,22 +45,22 @@
     <% @tasks.each do |task|%>
       <div class="card text-center w-50" style="height: 19rem;">
        <div class="card-body">
-       <h2 class='card-title'>
-       <% if task.status == 'complete' %>
-        <span class="badge bg-success rounded-pill"><%= task.status %></span>
-       <% elsif task.status == 'in-progress'%>
-        <span class="badge bg-primary rounded-pill"><%= task.status %></span>
-       <% else %> 
-        <span class="badge bg-warning rounded-pill"><%= task.status %></span>     
-       <% end %> 
-      </h2>
+        <h2 class='card-title'>
+          <% if task.status == 'complete' %>
+            <span class="badge bg-success rounded-pill"><%= task.status %></span>
+          <% elsif task.status == 'in-progress'%>
+            <span class="badge bg-primary rounded-pill"><%= task.status %></span>
+          <% else %> 
+            <span class="badge bg-warning rounded-pill"><%= task.status %></span>     
+          <% end %> 
+        </h2>
        <div class="d-flex flex-row-reverse justify_content-end">
        <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %><br>
        <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-secondary', style:'margin: 0px 2px' %>
-      </div>
+       </div>
         <h5 class="card-title"> Task title: <%= task.title%> </h5><br>
         <p class="card-text">Description: <%= task.description%></p><br>
-       </div>
+      </div>
       </div>  
     <% end %>
  
