@@ -41,6 +41,7 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end 
 
+
   private
 
   def set_project

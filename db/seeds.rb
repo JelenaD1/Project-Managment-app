@@ -12,5 +12,7 @@
   Category.create(name: "JavaScript")
   Category.create(name: "Nitro")
 
+  
+
  
   

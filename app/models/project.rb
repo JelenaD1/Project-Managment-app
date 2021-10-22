@@ -37,5 +37,6 @@ class Project < ApplicationRecord
   def self.non_completed_projects(user)
     all.where(user: user).select{|project| project.percent_complete < 100}
   end 
+
  
 end

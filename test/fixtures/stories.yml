@@ -2,10 +2,14 @@
 
 one:
   name: MyString
-  start_date: 1
-  end_date: 1
+  description: MyString
+  user_id: 1
+  link: MyString
+  start_date: 2021-10-22
 
 two:
   name: MyString
-  start_date: 1
-  end_date: 1
+  description: MyString
+  user_id: 1
+  link: MyString
+  start_date: 2021-10-22

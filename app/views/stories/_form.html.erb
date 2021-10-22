@@ -1,0 +1,42 @@
+<%= form_with(model: story, local: true) do |form| %>
+  <% if story.errors.any? %>
+    <div>
+      <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
+      <ul>
+        <% story.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="card text-center w-25" style="height: 35rem;">  
+ <div class='card-body'> 
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'form-control'%>
+    </div>
+
+    <div>
+      <%= form.label :description %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>  
+    
+    <div>
+      <%= form.label :link %>
+      <%= form.text_field :link, class: 'form-control' %>
+    </div>  
+    
+    <div>
+      <%= form.label 'Start Date' %>
+      <%= form.date_field :start_date, class: 'form-control'%>
+    </div>
+    
+    <br>
+    <div class='actions'>
+      <%= form.submit class: "btn btn-primary" %>
+    </div>  
+  </div>
+</div>
+<% end %>  

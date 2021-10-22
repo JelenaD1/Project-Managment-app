@@ -1,0 +1,7 @@
+Projects:
+
+<ul>
+ <% @category.projects.uniq.each do |project|%>
+  <li><%= link_to project.name, projects_path%></li>
+ <% end %>
+</ul>  
