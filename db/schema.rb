@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_184151) do
+ActiveRecord::Schema.define(version: 2021_10_23_024515) do
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mentors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,6 +32,13 @@ ActiveRecord::Schema.define(version: 2021_10_22_184151) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "github"
     t.date "start_date"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "story_id"
+    t.integer "mentor_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "stories", force: :cascade do |t|
