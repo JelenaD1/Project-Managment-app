@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   
   def index
-    @stories = current_user.stories
+    @stories = current_user.stories.search(params[:search])
   end 
 
   def show
