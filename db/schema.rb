@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_23_024515) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "stories", force: :cascade do |t|
+  create_table "stories", force: :cascade do |t|                         
     t.string "name"
     t.string "description"
     t.integer "user_id"

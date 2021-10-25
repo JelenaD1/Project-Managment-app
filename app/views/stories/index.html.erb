@@ -2,7 +2,7 @@
 <div class='d-flex justify-content-between'>
       <%= link_to 'New Story', new_story_path, class: "btn btn-primary" %>
   <%= form_with(url: '/stories', method: 'get', local: true) do %>
-    <%= text_field_tag(:search) %>
+    <%= text_field_tag(:search)%>
     <%= submit_tag("Search") %>
   <% end %>
 </div>
