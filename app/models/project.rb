@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   has_many :tasks
   has_many :categories, through: :tasks
 
+
   validates_presence_of :name
 
   def status
@@ -31,9 +32,14 @@ class Project < ApplicationRecord
     ((total_complete.to_f / total_tasks) * 100).round
   end
 
+
   def self.completed_projects(user)
     all.where(user: user).select { |project| project.percent_complete == 100 }
   end
+
+  # or
+  # scope :complete_projects, ->(user) { where(user: user).select { |project| project.percent_complete == 100 } }
+
 
   def self.non_completed_projects(user)
     all.where(user: user).select { |project| project.percent_complete < 100 }
