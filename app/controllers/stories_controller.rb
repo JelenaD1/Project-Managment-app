@@ -1,13 +1,12 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
-  
+  before_action :set_story, only: %i[show edit update destroy]
+
   def index
     @stories = current_user.stories.search(params[:search])
-  end 
+  end
 
-  def show
-  end 
+  def show; end
 
   def new
     @story = current_user.stories.build
@@ -16,37 +15,34 @@ class StoriesController < ApplicationController
   def create
     @story = current_user.stories.build(story_params)
     if @story.save
-      redirect_to stories_url, notice: 'Story was successfully created.' 
+      redirect_to stories_url, notice: "Story was successfully created."
     else
       render :new
     end
-  end 
+  end
 
-  def edit
-  end 
+  def edit; end
 
   def update
     if @story.update(story_params)
-      redirect_to stories_url, notice: 'Story was successfully updated.' 
-      else
-       render :edit 
+      redirect_to stories_url, notice: "Story was successfully updated."
+    else
+      render :edit
     end
-  end 
+  end
 
   def destroy
     @story.destroy
-    redirect_to stories_url, notice: 'Story was successfully destroyed.'
+    redirect_to stories_url, notice: "Story was successfully destroyed."
   end
 
-  private
+private
 
   def set_story
     @story = current_user.stories.find(params[:id])
-  end 
+  end
 
   def story_params
     params.require(:story).permit(:name, :description, :link, :start_date)
-  end 
-
-
+  end
 end

@@ -4,15 +4,12 @@ class Story < ApplicationRecord
   has_many :mentors, through: :reviews
 
   validates_presence_of :name
-  
 
   def self.search(search)
-    if search 
-        where(["name LIKE ?","%#{search}%"])
+    if search
+      where(["name LIKE ?", "%#{search}%"])
     else
-        all
+      all
     end
-  end 
-  
-
+  end
 end

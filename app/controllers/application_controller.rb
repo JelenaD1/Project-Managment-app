@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if:  :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :prep_navbar
-
 
 protected
 
@@ -10,6 +9,6 @@ protected
   end
 
   def prep_navbar
-    @categories = Category.all 
-  end 
+    @categories = Category.all
+  end
 end

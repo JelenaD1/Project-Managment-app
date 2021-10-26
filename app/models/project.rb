@@ -6,18 +6,19 @@ class Project < ApplicationRecord
   validates_presence_of :name
 
   def status
-    return 'not-started' if tasks.none?
-    if tasks.all? { |task| task.complete? }
-      'complete'
+    return "not-started" if tasks.none?
+
+    if tasks.all?(&:complete?)
+      "complete"
     elsif tasks.any? { |task| task.in_progress? || task.complete? }
-      'in-progress'
+      "in-progress"
     else
-      'not-started'
+      "not-started"
     end
   end
 
   def total_complete
-    tasks.select { |task| task.complete? }.count
+    tasks.count(&:complete?)
   end
 
   def total_tasks
@@ -26,16 +27,15 @@ class Project < ApplicationRecord
 
   def percent_complete
     return 0 if tasks.none?
+
     ((total_complete.to_f / total_tasks) * 100).round
   end
 
   def self.completed_projects(user)
-    all.where(user: user).select{|project| project.percent_complete == 100}
+    all.where(user: user).select { |project| project.percent_complete == 100 }
   end
 
   def self.non_completed_projects(user)
-    all.where(user: user).select{|project| project.percent_complete < 100}
-  end 
-
- 
+    all.where(user: user).select { |project| project.percent_complete < 100 }
+  end
 end

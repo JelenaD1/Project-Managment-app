@@ -1,16 +1,15 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
- 
+  before_action :set_project, only: %i[show edit update destroy]
+
   def index
     @projects = current_user.projects
-  end 
+  end
 
-  def show 
-    # @task = @project.tasks.build
+  def show
     @all_categories = Category.all
     @tasks = @project.tasks
-  end 
+  end
 
   def new
     @project = current_user.projects.build
@@ -19,38 +18,34 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.' 
+      redirect_to @project, notice: "Project was successfully created."
     else
       render :new
     end
-  end 
+  end
 
-  def edit
-  end 
+  def edit; end
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.' 
-      else
-       render :edit 
+      redirect_to @project, notice: "Project was successfully updated."
+    else
+      render :edit
     end
   end
 
   def destroy
     @project.destroy
-    redirect_to projects_url, notice: 'Project was successfully destroyed.'
-  end 
+    redirect_to projects_url, notice: "Project was successfully destroyed."
+  end
 
-
-  private
+private
 
   def set_project
     @project = current_user.projects.find(params[:id])
-  end 
+  end
 
   def project_params
     params.require(:project).permit(:name, :description, :github, :start_date)
-  end 
-
-  
+  end
 end
