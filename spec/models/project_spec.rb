@@ -1,6 +1,11 @@
 require 'rails_helper'
 RSpec.describe Project, type: :model do
 
+  it { should belong_to(:user)}
+  it { should have_many(:tasks)}
+  it { should have_many(:categories)}
+  it { should validate_presence_of(:name)}
+
   describe ".new" do
     it "make a new instance with attributes" do
       project = build(:project)

@@ -6,6 +6,7 @@ class Project < ApplicationRecord
 
   validates_presence_of :name
 
+
   def status
     return "not-started" if tasks.none?
 

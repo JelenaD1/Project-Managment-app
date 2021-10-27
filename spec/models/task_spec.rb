@@ -1,6 +1,16 @@
 require "rails_helper"
-
 RSpec.describe Task, type: :model do
+
+  it {should belong_to(:project)}
+  it {should belong_to(:category)}
+  it do
+    should validate_inclusion_of(:status).
+    in_array(['not-started', 'in-progress', 'complete'])
+  end
+  it {should validate_presence_of(:title)}
+  it { should accept_nested_attributes_for(:category) }
+
+
 
   describe ".new" do
     it "returns new instance of task with attributes" do
