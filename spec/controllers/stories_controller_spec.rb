@@ -18,7 +18,7 @@ RSpec.describe StoriesController, type: :controller do
     end
 
 
-    describe "GET new" do
+    describe "GET new", :aggregate_failures do
       it "renders the new template" do
         get :new, params: {user: @user}
 
@@ -39,7 +39,7 @@ RSpec.describe StoriesController, type: :controller do
         post :create, params: invalid_params.merge(user: @user)
 
         expect(response).to render_template :new
-       end
+      end
     end
 
 
@@ -54,7 +54,7 @@ RSpec.describe StoriesController, type: :controller do
     end
 
 
-    describe "POST update" do
+    describe "POST update", :aggregate_failures do
       it "updates the story" do
         story = create(:story, user: @user)
 
@@ -73,7 +73,7 @@ RSpec.describe StoriesController, type: :controller do
     end
 
 
-    describe "DELETE destroy" do
+    describe "DELETE destroy", :aggregate_failures do
       it 'deletes the story' do
         story = create(:story, user: @user)
 

@@ -83,7 +83,7 @@ RSpec.describe TasksController, type: :controller do
     end
 
 
-    describe "DELETE destroy" do
+    describe "DELETE destroy", :aggregate_failures do
       it "deletes the task" do
         project = create(:project, user: @user)
         task = create(:task, project: project)

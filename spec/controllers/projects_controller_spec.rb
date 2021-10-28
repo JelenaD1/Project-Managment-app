@@ -88,7 +88,7 @@ RSpec.describe ProjectsController, type: :controller do
     end
 
 
-    describe "DELETE destroy" do
+    describe "DELETE destroy", :aggregate_failures do
       it "deletes a project" do
         project = create(:project, user: @user)
 
