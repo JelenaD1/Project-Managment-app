@@ -15,7 +15,6 @@ class TasksController < ApplicationController
     @task = @project.tasks.build
   end
 
-  def edit; end
 
   def create
     @task = @project.tasks.build(task_params)
@@ -25,6 +24,8 @@ class TasksController < ApplicationController
       render action: "new"
     end
   end
+
+  def edit; end
 
   def update
     if @task.update(task_params)
