@@ -35,9 +35,7 @@ RSpec.describe TasksController, type: :controller do
         project = create(:project, user: @user)
         category = create(:category)
 
-        expect do
-          post :create, params: valid_params(project, category).merge(project_id: project.id)
-        end.to change{Task.count}.from(0).to(1)
+        expect{post :create, params: valid_params(project, category).merge(project_id: project.id)}.to change{Task.count}.from(0).to(1)
       end
 
       it "re-renders new template with invalid params" do
@@ -90,9 +88,7 @@ RSpec.describe TasksController, type: :controller do
         project = create(:project, user: @user)
         task = create(:task, project: project)
 
-        expect do
-          delete :destroy, params: {id: task.id, project_id: project.id}
-        end.to change{Task.count}.from(1).to(0)
+        expect{delete :destroy, params: {id: task.id, project_id: project.id}}.to change{Task.count}.from(1).to(0)
         expect(response).to redirect_to project_url
       end
     end

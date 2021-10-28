@@ -44,9 +44,7 @@ RSpec.describe ProjectsController, type: :controller do
     describe "POST create", :aggregate_failures do
       it "creates a new instance of the project" do
 
-       expect do
-        post :create, params: valid_params.merge(user: @user)
-       end.to change{Project.count}.from(0).to(1)
+       expect{post :create, params: valid_params.merge(user: @user)}.to change{Project.count}.from(0).to(1)
 
        project = Project.first
        expect(response).to redirect_to project
@@ -94,9 +92,7 @@ RSpec.describe ProjectsController, type: :controller do
       it "deletes a project" do
         project = create(:project, user: @user)
 
-        expect do
-          delete :destroy, params: {id: project.id, user: @user}
-        end.to change{Project.count}.from(1).to(0)
+        expect{delete :destroy, params: {id: project.id, user: @user}}.to change{Project.count}.from(1).to(0)
         expect(response).to redirect_to projects_url
       end
     end

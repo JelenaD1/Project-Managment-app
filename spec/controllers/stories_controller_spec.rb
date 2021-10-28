@@ -30,9 +30,7 @@ RSpec.describe StoriesController, type: :controller do
     describe "POST create", :aggregate_failures do
       it "creates a new story" do
 
-        expect do
-         post :create, params: valid_params.merge(user: @user)
-        end.to change{Story.count}.by(1)
+        expect{post :create, params: valid_params.merge(user: @user)}.to change{Story.count}.by(1)
 
         expect(response).to redirect_to stories_path
       end
