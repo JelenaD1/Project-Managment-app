@@ -108,17 +108,5 @@ RSpec.describe StoriesController, type: :controller do
       }
     end
 
-
-
-
-
-
-
-
-
-
-
-
-
   end
 end
