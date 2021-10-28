@@ -69,9 +69,9 @@ RSpec.describe TasksController, type: :controller do
         task = create(:task, project: project)
         category = create(:category)
 
-        post :update, params: valid_params(project, category).merge(project_id: project.id)
+        post :update, params: valid_params(project, category).merge(id: task.id, project_id: project.id)
 
-        expect(response).to redirect_to project_ul
+        expect(response).to redirect_to task.project
       end
 
       it "re-renders the form with invalid input" do
@@ -79,8 +79,7 @@ RSpec.describe TasksController, type: :controller do
         task = create(:task, project: project)
         category = create(:category)
 
-        post :update, params: invalid_params(project, category).merge(project_id: project.id)
-
+        post :update, params: invalid_params(project, category).merge(id: task.id, project_id: project.id)
         expect(response).to render_template(:edit)
       end
     end
@@ -116,6 +115,7 @@ RSpec.describe TasksController, type: :controller do
     def invalid_params(project, category)
       {
         task: {
+          title: nil,
           description: "my first project",
           project_id: project.id,
           category_id: category.id,

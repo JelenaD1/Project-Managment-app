@@ -1,12 +1,11 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_story, only: %i[show edit update destroy]
+  before_action :set_story, only: %i[edit update destroy]
 
   def index
     @stories = current_user.stories.search(params[:search])
   end
 
-  def show; end
 
   def new
     @story = current_user.stories.build
