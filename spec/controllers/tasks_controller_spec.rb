@@ -30,22 +30,32 @@ RSpec.describe TasksController, type: :controller do
     end
 
 
+    describe "POST create" do
+      it "creates a new task" do
+        project = create(:project, user: @user)
+        category = create(:category)
+
+        expect do
+          post :create, params: valid_params(project, category).merge(project_id: project.id)
+        end.to change{Task.count}.from(0).to(1)
+      end
+    end
 
 
 
+    def valid_params(project, category)
+      {
+        task: {
+          title: "JavaScript",
+          description: "my first project",
+          project_id: project.id,
+          category_id: category.id,
+          status: "complete"
 
+        }
+      }
 
-
-
-
-
-
-
-
-
-
-
-
+    end
 
 
 
