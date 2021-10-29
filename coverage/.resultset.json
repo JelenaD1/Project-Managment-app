@@ -630,9 +630,9 @@
         "lines": [
           1,
           1,
-          4,
-          4,
-          4,
+          5,
+          5,
+          5,
           null,
           null
         ]
@@ -746,6 +746,32 @@
           null
         ]
       },
+      "/Users/jelenadurovic/Desktop/Development/project-managment/spec/system/projects/new_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/jelenadurovic/Desktop/Development/project-managment/app/models/project.rb": {
         "lines": [
           1,
@@ -758,7 +784,7 @@
           null,
           null,
           1,
-          3,
+          6,
           null,
           0,
           0,
@@ -770,11 +796,11 @@
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
@@ -809,34 +835,34 @@
           null,
           null,
           1,
-          1,
-          1,
+          2,
+          2,
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
           1,
-          null,
           1,
-          0,
-          0,
+          1,
           null,
           0,
           null,
           null,
           null,
           1,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
           0,
           0,
           null,
@@ -844,11 +870,11 @@
           1,
           null,
           1,
-          1,
+          2,
           null,
           null,
           1,
-          0,
+          1,
           null,
           null
         ]
@@ -866,7 +892,7 @@
           null,
           null,
           1,
-          5,
+          8,
           null,
           null
         ]
@@ -909,6 +935,6 @@
         ]
       }
     },
-    "timestamp": 1635517093
+    "timestamp": 1635520699
   }
 }

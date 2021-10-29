@@ -6,7 +6,7 @@ describe "when user visit the project index page" do
     sign_in @user
   end
 
-  it "displays the list of the projects" do
+  it "displays the list of the projects", :aggregate_failures do
     project = create(:project, user: @user, name: "Rails project")
 
     visit projects_path
@@ -14,7 +14,7 @@ describe "when user visit the project index page" do
     expect(page).to have_content "Rails project"
   end
 
-  it "has a button to create a new project" do
+  it "has a button to create a new project", :aggregate_failures do
     visit projects_path
 
     click_link "New Project"
@@ -22,7 +22,7 @@ describe "when user visit the project index page" do
     expect(page.current_path).to eq new_project_path
   end
 
-  it "has a button project details " do
+  it "has a button project details", :aggregate_failures do
     project = create(:project, user: @user, name: "Rails project")
 
     visit projects_path
