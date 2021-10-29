@@ -16,7 +16,7 @@
     <p>Statistics:</p>
     <ul class="list-group">
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        Project status: 
+        Project status:
         <% if @project.status == 'complete'%>
         <span class="badge bg-success rounded-pill"><%= @project.status%></span>
         <% elsif @project.status == 'in-progress'%>
@@ -33,10 +33,10 @@
        Tasks completed:
        <span class="badge bg-dark rounded-pill"><%= @project.total_complete%></span>
       </li>
-    </ul>  
+    </ul>
     <%=link_to 'Add new task', new_project_task_path(@project), class: "btn btn-outline-primary" %>
   </div>
-</div>    
+</div>
 
 
   <br>
@@ -45,24 +45,20 @@
       <div class="card text-center w-50" style="height: 19rem;">
        <div class="card-body">
         <div class="d-flex flex-row-reverse justify_content-end">
-        <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %><br>
-        <%= link_to 'Edit', edit_project_task_path(@project, task), class: 'btn btn-secondary', style:'margin: 0px 2px' %>
+        <%= link_to 'Destroy', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' }, id: "delete task", class: 'btn btn-danger' %><br>
+        <%= link_to 'Edit', edit_project_task_path(@project, task), id: "edit task", class: 'btn btn-secondary', style:'margin: 0px 2px' %>
        </div>
         <h2 class='card-title'>
           <% if task.status == 'complete' %>
             <span class="badge bg-success rounded-pill"><%= task.status %></span>
           <% elsif task.status == 'in-progress'%>
             <span class="badge bg-primary rounded-pill"><%= task.status %></span>
-          <% else %> 
-            <span class="badge bg-warning rounded-pill"><%= task.status %></span>     
-          <% end %> 
+          <% else %>
+            <span class="badge bg-warning rounded-pill"><%= task.status %></span>
+          <% end %>
         </h2>
         <h5 class="card-title"> Task title: <%= task.title%> </h5><br>
         <p class="card-text">Description: <%= task.description%></p><br>
       </div>
-      </div>  
+      </div>
     <% end %>
- 
-
-
-
