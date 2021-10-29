@@ -19,4 +19,12 @@ describe "when user visits the new page" do
     expect(page).to have_content("System tests")
     expect(page.current_path).to eq project_path(project)
   end
+
+  it "displays the errors when input is invalid", :aggregate_failures do
+    visit new_project_path(@user)
+
+    click_button "Create Project"
+
+    expect(page).to have_content "prohibited this project from being saved"
+  end
 end
