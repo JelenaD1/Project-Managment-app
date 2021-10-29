@@ -54,4 +54,17 @@ describe "when user visits the project show page" do
 
     expect(page.current_path).to eq edit_project_task_path(task, project)
   end
+
+  it "has a delete button to delete the task", :aggregate_failures do
+    project = create(:project, user: @user)
+    task = create(:task, project: project)
+
+    visit project_path(project)
+
+    accept_confirm do
+      click_on(id: "delete task")
+    end
+
+    expect(page.current_path).to eq project_path(project)
+  end
 end
