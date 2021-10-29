@@ -65,3 +65,4 @@ gem "faker"
 gem "pry"
 gem "pry-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
+gem 'simplecov', require: false, group: :test
