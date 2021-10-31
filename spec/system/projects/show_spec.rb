@@ -24,6 +24,28 @@ describe "when user visits the project show page" do
     expect(page.current_path).to eq edit_project_path(project)
   end
 
+  it "has a back button to go to index page", :aggregate_failures do
+    project = create(:project, user: @user, name: "Rails project")
+
+    visit project_path(project)
+
+    click_link "Back"
+
+    expect(page.current_path).to eq projects_path
+  end
+
+  it "has a button to delete the project", :aggregate_failures do
+    project = create(:project, user: @user, name: "Rails project")
+
+    visit project_path(project)
+
+    accept_confirm do
+      click_link "delete project"
+    end
+
+    expect(page.current_path).to eq projects_path
+  end
+
   it "has a button to create a new task", :aggregate_failures do
     project = create(:project, user: @user, name: "Rails project")
 
